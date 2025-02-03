@@ -29,6 +29,8 @@ const RoomDesignWizard = ({
     style: "",
     colorPalette: [],
     materials: [],
+    imageUrl: null,
+    loadingImage: false,
   });
 
   const progress = (currentStep / steps.length) * 100;
@@ -37,7 +39,7 @@ const RoomDesignWizard = ({
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1);
     } else {
-      onComplete(roomData);
+      generateDesign();
     }
   };
 
@@ -45,6 +47,18 @@ const RoomDesignWizard = ({
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
+  };
+
+  const generateDesign = () => {
+    console.log("Generating Design...");
+    setRoomData((prevData) => ({ ...prevData, loadingImage: true }));
+    
+    // Simulate an async image generation process
+    setTimeout(() => {
+      const generatedImageUrl = "https://picsum.photos/400/400"; // Valid placeholder image
+      console.log("Generated Image URL:", generatedImageUrl);
+      setRoomData((prevData) => ({ ...prevData, imageUrl: generatedImageUrl, loadingImage: false }));
+    }, 2000); // Simulate delay
   };
 
   return (
@@ -108,10 +122,11 @@ const RoomDesignWizard = ({
                 </p>
                 <Button
                   size="lg"
-                  onClick={() => onComplete(roomData)}
+                  onClick={generateDesign}
                   className="w-full max-w-md"
+                  disabled={roomData.loadingImage}
                 >
-                  Generate Design
+                  {roomData.loadingImage ? "Generating..." : "Generate Design"}
                 </Button>
               </div>
             )}
@@ -131,7 +146,7 @@ const RoomDesignWizard = ({
             <ChevronLeft className="w-4 h-4 mr-2" />
             Back
           </Button>
-          <Button onClick={handleNext} disabled={currentStep === steps.length}>
+          <Button onClick={handleNext}>
             {currentStep === steps.length ? "Complete" : "Next"}
             <ChevronRight className="w-4 h-4 ml-2" />
           </Button>

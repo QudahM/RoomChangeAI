@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Button } from "./ui/button";
@@ -9,6 +9,7 @@ interface PreviewPanelProps {
     dimensions?: { width: number; length: number; height: number };
     style?: string;
     colorPalette?: string[];
+    imageUrl?: string | null;
   };
 }
 
@@ -17,8 +18,28 @@ const PreviewPanel = ({
     dimensions: { width: 12, length: 15, height: 8 },
     style: "Modern",
     colorPalette: ["#F5F5F5", "#E0E0E0", "#9E9E9E"],
+    imageUrl: null,
   },
 }: PreviewPanelProps) => {
+  const [generatedImage, setGeneratedImage] = useState<string | null>(roomData.imageUrl);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (roomData.imageUrl) {
+      setLoading(true);
+      const img = new Image();
+      img.src = roomData.imageUrl;
+      img.onload = () => {
+        setGeneratedImage(roomData.imageUrl);
+        setLoading(false);
+      };
+      img.onerror = () => {
+        setGeneratedImage(null);
+        setLoading(false);
+      };
+    }
+  }, [roomData.imageUrl]);
+
   return (
     <Card className="w-full max-w-[400px] h-[700px] bg-white p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -43,13 +64,17 @@ const PreviewPanel = ({
         </TabsList>
         <TabsContent value="3d" className="mt-4">
           <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-            {/* Placeholder for 3D visualization */}
-            <p className="text-gray-500">3D Preview Loading...</p>
+            {loading ? (
+              <p className="text-gray-500">Loading image...</p>
+            ) : generatedImage ? (
+              <img src={generatedImage} alt="Generated Design" className="w-full h-full object-cover rounded-lg" />
+            ) : (
+              <p className="text-gray-500">3D Preview Loading...</p>
+            )}
           </div>
         </TabsContent>
         <TabsContent value="2d" className="mt-4">
           <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-            {/* Placeholder for 2D floor plan */}
             <p className="text-gray-500">2D Floor Plan</p>
           </div>
         </TabsContent>
@@ -83,11 +108,7 @@ const PreviewPanel = ({
           <h3 className="text-sm font-medium mb-2">Color Palette</h3>
           <div className="flex gap-2">
             {roomData.colorPalette?.map((color, index) => (
-              <div
-                key={index}
-                className="w-8 h-8 rounded-full border"
-                style={{ backgroundColor: color }}
-              />
+              <div key={index} className="w-8 h-8 rounded-full border" style={{ backgroundColor: color }} />
             ))}
           </div>
         </div>
