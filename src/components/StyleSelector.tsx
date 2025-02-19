@@ -27,40 +27,40 @@ const defaultStyles: StyleOption[] = [
   {
     id: "modern",
     name: "Modern",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    image: "/images/Style-Modern.jpg",
     colors: ["#F8F9FA", "#212529", "#339AF0", "#FF6B6B", "#51CF66"],
     materials: [
       {
         name: "Glass",
-        image: "https://images.unsplash.com/photo-1598928636135-d146006ff4be",
+        image: "/images/Materials-Glass.jpg",
       },
       {
         name: "Steel",
-        image: "https://images.unsplash.com/photo-1602664876866-d3b33b77756b",
+        image: "/images/Materials-Steel.jpg",
       },
       {
-        name: "Wood",
-        image: "https://images.unsplash.com/photo-1572297794908-f2ee5a2930d05",
+        name: "Maple",
+        image: "/images/Materials-Wood.jpg",
       },
     ],
   },
   {
     id: "traditional",
     name: "Traditional",
-    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab",
+    image: "/images/Style-Traditional.webp",
     colors: ["#E9ECEF", "#495057", "#B197FC", "#FFD43B", "#20C997"],
     materials: [
       {
         name: "Mahogany",
-        image: "https://images.unsplash.com/photo-1609686527831-8d6a3cbe4a5d",
+        image: "/images/Materials-Mahogany.jpg",
       },
       {
         name: "Marble",
-        image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338",
+        image: "/images/Materials-Marble.jpg",
       },
       {
         name: "Brass",
-        image: "https://images.unsplash.com/photo-1595265677860-9a3168007dc0",
+        image: "/images/Materials-Brass.jpg",
       },
     ],
   },
@@ -72,15 +72,15 @@ const defaultStyles: StyleOption[] = [
     materials: [
       {
         name: "Rattan",
-        image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8",
+        image: "/images/Materials-Rattan.jpg",
       },
       {
-        name: "Jute",
-        image: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea",
+        name: "Teak",
+        image: "/images/Materials-Teak.jpg",
       },
       {
-        name: "Cotton",
-        image: "https://images.unsplash.com/photo-1594761049103-0026413f7250",
+        name: "Cotton Fabric",
+        image: "/images/Materials-Cotton.jpg",
       },
     ],
   },
