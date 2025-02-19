@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom"; // Ensure HashRouter is used
 
 import { TempoDevtools } from "tempo-devtools";
 TempoDevtools.init();
@@ -11,7 +11,7 @@ const basename = import.meta.env.BASE_URL;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <HashRouter>
+    <HashRouter basename={basename}>
       <App />
     </HashRouter>
   </React.StrictMode>,
