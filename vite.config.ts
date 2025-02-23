@@ -10,7 +10,7 @@ if (process.env.TEMPO === "true") {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./", 
+  base: "/RoomChangeAI/", 
   optimizeDeps: {
     entries: ["src/main.tsx", "src/tempobook/**/*"],
   },
