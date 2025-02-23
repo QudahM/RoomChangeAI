@@ -10,7 +10,7 @@ if (process.env.TEMPO === "true") {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/RoomChangeAI/', 
+  base: "./", 
   optimizeDeps: {
     entries: ["src/main.tsx", "src/tempobook/**/*"],
   },
@@ -18,7 +18,6 @@ export default defineConfig({
     react({
       plugins: conditionalPlugins,
     }),
-    // Remove the tempo() plugin unless absolutely necessary
   ],
   resolve: {
     preserveSymlinks: true,
