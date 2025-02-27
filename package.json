@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "git add docs && git commit -m 'Deploy Vite app' && git push origin main"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",

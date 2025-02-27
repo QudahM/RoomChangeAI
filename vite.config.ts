@@ -8,11 +8,11 @@ if (process.env.TEMPO === "true") {
   conditionalPlugins.push(["tempo-devtools/swc", {}]);
 }
 
-const base = process.env.NODE_ENV === "production" ? "/RoomChangeAI/" : "/";
+//const base = process.env.NODE_ENV === "production" ? "/RoomChangeAI/" : "/";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base, 
+  base: "/RoomChangeAI/", 
   optimizeDeps: {
     entries: ["src/main.tsx", "src/tempobook/**/*"],
   },
