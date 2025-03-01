@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://qudahm.github.io/RoomChangeAI/",
+  "homepage": "/RoomChangeAI/",
   "scripts": {
     "dev": "vite",
     "server": "node src/api/server.js",

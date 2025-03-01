@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+/*import { Suspense } from "react";
 import { useRoutes, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 
@@ -16,6 +16,25 @@ function App() {
         </Routes>
         {dynamicRoutes}
       </>
+    </Suspense>
+  );
+}
+
+export default App; */
+
+import { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/home";
+
+function App() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {import.meta.env.VITE_TEMPO === "true" && (
+          <Route path="/tempo" element={<div>Tempo</div>} />
+        )}
+      </Routes>
     </Suspense>
   );
 }
